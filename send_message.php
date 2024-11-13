@@ -11,7 +11,6 @@ if (isset($data['username']) && isset($data['message'])) {
     if ($conn->connect_error) {
         die(json_encode(['success' => false, 'error' => 'Database connection failed.']));
     }
-
     $stmt = $conn->prepare('INSERT INTO messages (username, message) VALUES (?, ?)');
     $stmt->bind_param('ss', $username, $message);
     $stmt->execute();
